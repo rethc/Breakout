@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.Color;
 
 public class Ball {
-    private int x,  y, size, xSpeed, ySpeed, leftLimit, rightLimit, topLimit, bottomLimit;
+    private int x, y, size, xSpeed, ySpeed, leftLimit, rightLimit, topLimit, bottomLimit;
     Color color = Color.WHITE;
 
     public Ball(int x, int y, int size, int speed) {
@@ -20,16 +20,14 @@ public class Ball {
         return xSpeed;
     }
 
-    public int getySpeed(){
-        return ySpeed;
-    }
+    public int getySpeed() { return ySpeed; }
 
-    public void addxSpeed(){
+    public void addxSpeed() {
         this.x += this.getxSpeed();
         updateLimits();
     }
 
-    public void addySpeed(){
+    public void addySpeed() {
         this.y += this.getySpeed();
         updateLimits();
     }
@@ -41,36 +39,36 @@ public class Ball {
         this.bottomLimit = this.y - this.size;
     }
 
-    public void update(){
+    public void update() {
         this.addxSpeed();
         this.addySpeed();
         if (this.rightLimit > Gdx.graphics.getWidth() || this.leftLimit < 0) {
             this.xSpeed = -this.xSpeed;
         }
-        if (this.topLimit >  Gdx.graphics.getHeight() || this.bottomLimit < 0) {
+        if (this.topLimit > Gdx.graphics.getHeight() || this.bottomLimit < 0) {
             this.ySpeed = -this.ySpeed;
         }
     }
 
-    public void draw(ShapeRenderer shape){
+    public void draw(ShapeRenderer shape) {
         shape.setColor(color);
         shape.circle(x, y, size);
     }
 
-    public void checkCollision(Paddle paddle){
+    public void checkCollision(Paddle paddle) {
         if (collidesWith(paddle)) {
             this.ySpeed = -this.ySpeed;
         }
     }
 
-    public void checkCollision(Block block){
+    public void checkCollision(Block block) {
         if (collidesWith(block)) {
             this.ySpeed = -this.ySpeed;
             block.destroyed = true;
         }
     }
 
-    private boolean collidesWith(Paddle paddle){
+    private boolean collidesWith(Paddle paddle) {
         if (this.leftLimit <= paddle.getRightLimit()
                 && paddle.getRightLimit() <= this.rightLimit + paddle.getWidth()
                 && this.topLimit >= paddle.getBottomLimit()
@@ -80,7 +78,7 @@ public class Ball {
         return false;
     }
 
-    private boolean collidesWith(Block block){
+    private boolean collidesWith(Block block) {
         if (this.leftLimit <= block.getRightLimit()
                 && block.getRightLimit() <= this.rightLimit + block.getWidth()
                 && this.topLimit >= block.getBottomLimit()

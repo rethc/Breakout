@@ -23,21 +23,17 @@ public class Block {
         this.topLimit = y + this.height;
     }
 
-    public int getLeftLimit() {
-        return leftLimit;
+    public int getBottomLimit() {
+        return bottomLimit;
     }
 
     public int getRightLimit() {
         return rightLimit;
     }
 
-    public int getTopLimit() {
-        return topLimit;
-    }
+    public int getLeftLimit() { return leftLimit; }
 
-    public int getBottomLimit() {
-        return bottomLimit;
-    }
+    public int getTopLimit() { return topLimit; }
 
     public int getWidth() {
         return width;
