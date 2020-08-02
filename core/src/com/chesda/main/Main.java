@@ -5,29 +5,37 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
 public class Main extends ApplicationAdapter {
-	SpriteBatch batch;
-	Texture img;
+	ShapeRenderer shape;
+	int x = 50;
+	int y = 50;
+	int xSpeed = 5;
 	
 	@Override
 	public void create () {
-		batch = new SpriteBatch();
-		img = new Texture("badlogic.jpg");
+		shape = new ShapeRenderer();
 	}
 
 	@Override
 	public void render () {
-		Gdx.gl.glClearColor(1, 0, 0, 1);
+		x += xSpeed;
+		if (x > Gdx.graphics.getWidth()) {
+			xSpeed = -5;
+		}
+		if (x < 0) {
+			xSpeed = 5;
+		}
+
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		batch.begin();
-		batch.draw(img, 0, 0);
-		batch.end();
+		shape.begin(ShapeRenderer.ShapeType.Filled);
+		shape.circle(x, y, 50);
+		shape.end();
 	}
 	
 	@Override
 	public void dispose () {
-		batch.dispose();
-		img.dispose();
+
 	}
 }
