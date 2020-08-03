@@ -51,8 +51,7 @@ public class Paddle {
     }
 
     public void update(){
-        // Test Paddle Functionaility
-        // this.y = (Gdx.graphics.getHeight() - (Gdx.input.getY() + this.height / 2));
+        // Test Paddle Functionaility this.y = (Gdx.graphics.getHeight() - (Gdx.input.getY() + this.height / 2));
         this.x = (Gdx.input.getX() - this.width / 2);
         updateLimits();
     }
