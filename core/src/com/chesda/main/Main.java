@@ -18,8 +18,8 @@ public class Main extends ApplicationAdapter {
     @Override
     public void create() {
         shape = new ShapeRenderer();
-        ball = new Ball(100, 100, 10, 10);
-        paddle = new Paddle(50, 10, 150, 20);
+        ball = new Ball(100, 100, 10, 20);
+        paddle = new Paddle(50, 10, 150, 20, 30);
 
         for (int y = Gdx.graphics.getHeight() / 2; y < Gdx.graphics.getHeight(); y += blockHeight + 10) {
             for (int x = 0; x < Gdx.graphics.getWidth(); x += blockWidth + 10) {

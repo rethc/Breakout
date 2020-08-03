@@ -5,13 +5,14 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
 public class Paddle {
 
-    private int x, y, width, height, leftLimit, rightLimit, topLimit, bottomLimit;
+    private int x, y, width, height, leftLimit, rightLimit, topLimit, bottomLimit, movementSpeed;
 
-    public Paddle(int x, int y, int width, int height){
+    public Paddle(int x, int y, int width, int height, int movementSpeed){
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
+        this.movementSpeed = movementSpeed;
         updateLimits();
     }
 
@@ -52,7 +53,18 @@ public class Paddle {
 
     public void update(){
         // Test Paddle Functionaility this.y = (Gdx.graphics.getHeight() - (Gdx.input.getY() + this.height / 2));
-        this.x = (Gdx.input.getX() - this.width / 2);
+        //this.x = (Gdx.input.getX() - this.width / 2);
+
+        if (Math.abs(Gdx.input.getX() - this.x) > 100 ) {
+            // margin where we don't move the paddle when the cursor is close enough, make sure MARGIN > movementSpeed
+            if (this.x < Gdx.input.getX()) {
+                this.x += movementSpeed;
+            }
+            else {
+                this.x -= movementSpeed;
+            }
+        }
+
         updateLimits();
     }
 }
