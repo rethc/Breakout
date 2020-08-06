@@ -55,7 +55,7 @@ public class Paddle {
         // Test Paddle Functionaility this.y = (Gdx.graphics.getHeight() - (Gdx.input.getY() + this.height / 2));
         //this.x = (Gdx.input.getX() - this.width / 2);
 
-        if (Math.abs(Gdx.input.getX() - this.x) > 100 ) {
+        if (Math.abs(Gdx.input.getX() - this.x) > 30 ) {
             // margin where we don't move the paddle when the cursor is close enough, make sure MARGIN > movementSpeed
             if (this.x < Gdx.input.getX()) {
                 this.x += movementSpeed;
@@ -64,7 +64,6 @@ public class Paddle {
                 this.x -= movementSpeed;
             }
         }
-
         updateLimits();
     }
 }
